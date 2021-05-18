@@ -5,13 +5,13 @@ import Tail from "./Tail";
 const Categories = () => {
   const context = useContext(RootContext);
 
-  const { categories } = context;
+  const { categories, setCategory } = context;
   return (
     <>
-      {categories.map((categorie) => {
+      {categories.map((category) => {
         return (
-          <Tail image={categorie.image} key={categorie.name}>
-            {categorie.name}
+          <Tail image={category.image} key={category.name} category="category.name">
+            {category.name}
           </Tail>
         );
       })}
