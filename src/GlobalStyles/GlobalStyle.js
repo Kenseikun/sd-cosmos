@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
       color: white;
-      min-height: 100vh;
+      height: 100vh;
       font-family: ${({ theme }) => theme.fontFamily.main};
       background: ${({ theme }) => theme.colors.background};
       background-repeat: no-repeat;
