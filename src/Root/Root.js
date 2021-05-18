@@ -1,10 +1,14 @@
 import React from 'react'
 
+import RootContext from "../context";
+
 const Root = () => {
   return (
-    <div>
-      <p>Test</p>
-    </div>
+    <RootContext.Provider value={{}}>
+      <div>
+        <p>Test</p>
+      </div>
+    </RootContext.Provider>
   )
 }
 
