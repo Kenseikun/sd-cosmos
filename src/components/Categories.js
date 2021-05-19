@@ -5,7 +5,7 @@ import Tail from "./Tail";
 const Categories = () => {
   const context = useContext(RootContext);
 
-  const { categories, setCategory } = context;
+  const { categories } = context;
   return (
     <>
       {categories.map((category) => {
