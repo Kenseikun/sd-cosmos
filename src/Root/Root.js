@@ -7,8 +7,8 @@ import { Capsules, Crew, Details, Rockets } from "../assets/images/categories";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Rocket from "../components/Rocket";
 import Modal from "../components/Modal";
+import Rocket from "../components/Rocket";
 
 /**
  * @author Sebastian Dziechciarz
@@ -23,6 +23,7 @@ const Root = () => {
 
   const [category, setCategory] = useState("rockets");
   const [initialSpaceX, setInitialSpaceX] = useState([]);
+  const [isDataLoading, setIsDataLoading] = useState(false);
   const [isRocketAnimate, setIsRocketAnimate] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -31,10 +32,12 @@ const Root = () => {
    * useEffect works after `category` state change.
    */
   useEffect(() => {
+    setIsDataLoading(true);
     axios
       .get(`https://api.spacexdata.com/v4/${category}`)
       .then((response) => {
         setInitialSpaceX(response.data);
+        setIsDataLoading(false);
       })
       .catch((error) => console.log(error));
   }, [category]);
@@ -66,6 +69,7 @@ const Root = () => {
         category,
         categories,
         initialSpaceX,
+        isDataLoading,
         openModal,
         rocketAnimate,
         setShowModal,
@@ -73,7 +77,6 @@ const Root = () => {
       }}
     >
       <div className="container d-flex flex-column" style={{ height: "100vh" }}>
-
         <div className="row">
           <div className="col-12">
             <Header />
