@@ -12,10 +12,10 @@ const Categories = () => {
 
   return (
     <>
-      {categories.map((category) => {
+      {categories.map(({ name, image }) => {
         return (
-          <Tail image={category.image} key={category.name}>
-            {category.name}
+          <Tail image={image} key={name}>
+            {name}
           </Tail>
         );
       })}
