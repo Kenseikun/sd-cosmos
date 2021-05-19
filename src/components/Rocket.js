@@ -6,15 +6,11 @@ import { Moon, RocketImg, SmokeLeft, SmokeRight, Wings } from "../assets/images/
 
 const imgAnimate = keyframes`
   from {
-    transform: translateX(200px) scale(0.2);
-    opacity: 0;
-
+    transform: translateY(200px);
   }
 
   to {
-    transform:  translateX(0px) scale(1);
-    opacity: 10;
-
+    transform:  translateY(0px);
   }
 `;
 
@@ -37,6 +33,7 @@ const DIVWrapper = styled.div`
   height: 100%;
   margin-bottom: 24px;
 
+  /* TODO: */
   animation: ${({ isAnimate }) =>
     isAnimate &&
     css`
