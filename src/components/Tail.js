@@ -32,6 +32,7 @@ const Tail = ({ children, image }) => {
   const { openModal } = context;
 
   return (
+    // TODO: Dac children na dol
     <TailButton onClick={(e) => openModal(e)} style={{ backgroundImage: `url(${image})` }}>
       {children}
     </TailButton>

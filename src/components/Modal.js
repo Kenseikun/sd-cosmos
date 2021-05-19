@@ -3,6 +3,8 @@ import RootContext from "../context";
 import styled from "styled-components";
 
 import { Close, FilterArrow } from "../assets/icons";
+import { CircularProgress } from "@material-ui/core";
+import { categoriesNames } from "../helpers/categoriesArray";
 
 const Background = styled.div`
   position: fixed;
@@ -122,15 +124,61 @@ const CloseButton = styled.button`
  */
 const Modal = () => {
   const context = useContext(RootContext);
-  const { showModal, setShowModal, initialSpaceX, isDataLoading } = context;
-  // TODO: is data loading
+  const { showModal, setShowModal, initialSpaceX, isDataLoading, category } = context;
+
+  const _renderTypeAndStatus = (space) => {
+    const { type, status, name, agency, active, version } = space;
+
+    switch (category) {
+      case categoriesNames.capsules:
+        return (
+          <>
+            <p>{type}</p>
+            <p>{status}</p>
+          </>
+        );
+
+      case categoriesNames.crew:
+        return (
+          <>
+            <p>{agency}</p>
+            <p>{status}</p>
+          </>
+        );
+
+      case categoriesNames.rockets:
+        return (
+          <>
+            <p>{name}</p>
+            <p>{`${active}`}</p>
+          </>
+        );
+
+      case categoriesNames.starlink:
+        return (
+          <>
+            <p>{version}</p>
+            <p>{version}</p>
+          </>
+        );
+
+      default:
+        return (
+          <>
+            <p>{type}</p>
+            <p>{status}</p>
+          </>
+        );
+    }
+  };
+
   return (
     <>
       {showModal ? (
         <Background>
           <ModalWrapper>
             <ModalHeader>
-              <HeaderTitle>Starlink</HeaderTitle>
+              <HeaderTitle>{category}</HeaderTitle>
               <CloseButton aria-label="Close modal" onClick={() => setShowModal((prev) => !prev)}>
                 <img src={Close} alt="Close button" />
               </CloseButton>
@@ -146,19 +194,21 @@ const Modal = () => {
             </ModalFilters>
 
             <ModalContent>
-              {initialSpaceX.map((space) => {
-                return (
-                    <div className="modal_data" key={space.id}>
-                      <p>{space.agency}</p>
-                      <p>{space.status}</p>
-
-                      {/* TODO: */}
-                    {/* <p>{space.type}</p> */}
-                    {/* <p>{space.status}</p> */}
-
-                  </div>
-                );
-              })}
+              <>
+                {isDataLoading ? (
+                  <CircularProgress color="secondary" />
+                ) : (
+                  <>
+                    {initialSpaceX.map((space) => {
+                      return (
+                        <div className="modal_data" key={space.id}>
+                          {_renderTypeAndStatus(space)}
+                        </div>
+                      );
+                    })}
+                  </>
+                )}
+              </>
             </ModalContent>
           </ModalWrapper>
         </Background>
