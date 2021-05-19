@@ -51,10 +51,13 @@ const CloseButton = styled.button`
   border: none;
 `;
 
+/**
+ * @author Sebastian Dziechciarz
+ */
 const Modal = () => {
   const context = useContext(RootContext);
-
   const { showModal, setShowModal, initialSpaceX } = context;
+
   return (
     <>
       {showModal ? (

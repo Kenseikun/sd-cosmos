@@ -10,6 +10,9 @@ import Header from "../components/Header";
 import Rocket from "../components/Rocket";
 import Modal from "../components/Modal";
 
+/**
+ * @author Sebastian Dziechciarz
+ */
 const Root = () => {
   const [categories, setCategories] = useState([
     { name: "Capsules", image: `${Capsules}` },
@@ -19,39 +22,58 @@ const Root = () => {
   ]);
 
   const [category, setCategory] = useState("rockets");
-
   const [initialSpaceX, setInitialSpaceX] = useState([]);
-  const [isAnimate, setIsAnimate] = useState(false);
+  const [isRocketAnimate, setIsRocketAnimate] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const rocketAnimate = () => {
-    setIsAnimate(true);
-    setInterval(() => {
-      setIsAnimate(false);
-    }, 2000);
-  };
-
+  /**
+   * Getting data from `SpaceX` API with dynamic `category`
+   * useEffect works after `category` state change.
+   */
   useEffect(() => {
     axios
       .get(`https://api.spacexdata.com/v4/${category}`)
       .then((response) => {
-        console.log(response);
         setInitialSpaceX(response.data);
       })
       .catch((error) => console.log(error));
   }, [category]);
 
+  /**
+   * Setup category state for download API with new datas.
+   * Showing <Modal> component with this data.
+   */
   const openModal = (e) => {
     const category = e.target.innerText.toLowerCase();
     setCategory(category);
     setShowModal((prev) => !prev);
   };
 
+  /**
+   * Start rocket animation and setup interval for disabled <button>.
+   * Animation time should be the same as interval.
+   */
+  const rocketAnimate = () => {
+    setIsRocketAnimate(true);
+    setInterval(() => {
+      setIsRocketAnimate(false);
+    }, 2000);
+  };
+
   return (
     <RootContext.Provider
-      value={{ category, categories, rocketAnimate, openModal, showModal, setShowModal, initialSpaceX }}
+      value={{
+        category,
+        categories,
+        initialSpaceX,
+        openModal,
+        rocketAnimate,
+        setShowModal,
+        showModal,
+      }}
     >
       <div className="container d-flex flex-column" style={{ height: "100vh" }}>
+
         <div className="row">
           <div className="col-12">
             <Header />

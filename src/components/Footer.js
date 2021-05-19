@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Text = styled.p`
   color: ${({ theme }) => theme.fontColor.light};
@@ -7,6 +7,9 @@ const Text = styled.p`
   font-size: 12px;
 `;
 
+/**
+ * @author Sebastian Dziechciarz
+ */
 const Footer = () => {
   return (
     <footer className="row">

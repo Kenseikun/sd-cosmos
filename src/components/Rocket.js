@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
-
 import RootContext from "../context";
-
-
 import styled, { css, keyframes } from "styled-components";
 
 import { Moon, RocketImg, SmokeLeft, SmokeRight, Wings } from "../assets/images/rocket";
@@ -40,9 +37,11 @@ const DIVWrapper = styled.div`
   height: 100%;
   margin-bottom: 24px;
 
-  animation: ${({isAnimate}) => isAnimate && css`
-  border: 1px solid red;
-  `};
+  animation: ${({ isAnimate }) =>
+    isAnimate &&
+    css`
+      border: 1px solid red;
+    `};
 `;
 
 const RocketDiv = styled.div`
@@ -91,10 +90,12 @@ const LaunchButton = styled.button`
   }
 `;
 
+/**
+ * @author Sebastian Dziechciarz
+ */
 const Rocket = () => {
-const context = useContext(RootContext)
-
-const { rocketAnimate } = context
+  const context = useContext(RootContext);
+  const { rocketAnimate } = context;
 
   return (
     <RocketContainer>
