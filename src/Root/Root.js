@@ -3,25 +3,20 @@ import axios from "axios";
 import Categories from "../components/Categories";
 import RootContext from "../context";
 
-import { Capsules, Crew, Details, Rockets } from "../assets/images/categories";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
 import Rocket from "../components/Rocket";
+import { categoriesArray } from "../helpers/categoriesArray";
 
 /**
  * @author Sebastian Dziechciarz
  */
 const Root = () => {
-  const [categories, setCategories] = useState([
-    { name: "Capsules", image: `${Capsules}` },
-    { name: "Crew", image: `${Crew}` },
-    { name: "Rockets", image: `${Details}` },
-    { name: "Starlink", image: `${Rockets}` },
-  ]);
+  const [categories, setCategories] = useState([...categoriesArray]);
 
-  const [category, setCategory] = useState("rockets");
+  const [category, setCategory] = useState("");
   const [initialSpaceX, setInitialSpaceX] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(false);
   const [isRocketAnimate, setIsRocketAnimate] = useState(false);
