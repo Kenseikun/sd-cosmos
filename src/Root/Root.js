@@ -8,19 +8,21 @@ import { Capsules, Crew, Details, Rockets } from "../assets/images/categories";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Rocket from "../components/Rocket";
+import Modal from "../components/Modal";
 
 const Root = () => {
   const [categories, setCategories] = useState([
     { name: "Capsules", image: `${Capsules}` },
     { name: "Crew", image: `${Crew}` },
-    { name: "Rocktes", image: `${Details}` },
-    { name: "Details", image: `${Rockets}` },
+    { name: "Rockets", image: `${Details}` },
+    { name: "Starlink", image: `${Rockets}` },
   ]);
 
-  const [category, setCategory] = useState("capsules");
+  const [category, setCategory] = useState("rockets");
 
   const [initialSpaceX, setInitialSpaceX] = useState([]);
   const [isAnimate, setIsAnimate] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const rocketAnimate = () => {
     setIsAnimate(true);
@@ -29,7 +31,7 @@ const Root = () => {
     }, 2000);
   };
 
-  const getSpaceX = () => {
+  useEffect(() => {
     axios
       .get(`https://api.spacexdata.com/v4/${category}`)
       .then((response) => {
@@ -37,14 +39,18 @@ const Root = () => {
         setInitialSpaceX(response.data);
       })
       .catch((error) => console.log(error));
-  };
-
-  useEffect(() => {
-    getSpaceX();
   }, [category]);
 
+  const openModal = (e) => {
+    const category = e.target.innerText.toLowerCase();
+    setCategory(category);
+    setShowModal((prev) => !prev);
+  };
+
   return (
-    <RootContext.Provider value={{ categories, rocketAnimate, isAnimate, setCategory }}>
+    <RootContext.Provider
+      value={{ category, categories, rocketAnimate, openModal, showModal, setShowModal, initialSpaceX }}
+    >
       <div className="container d-flex flex-column" style={{ height: "100vh" }}>
         <div className="row">
           <div className="col-12">
@@ -63,6 +69,8 @@ const Root = () => {
         </div>
 
         <Footer />
+
+        <Modal />
       </div>
     </RootContext.Provider>
   );

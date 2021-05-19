@@ -94,7 +94,7 @@ const LaunchButton = styled.button`
 const Rocket = () => {
 const context = useContext(RootContext)
 
-const { rocketAnimate, isAnimate } = context
+const { rocketAnimate } = context
 
   return (
     <RocketContainer>

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import RootContext from "../context";
+
 
 import styled from "styled-components";
 
@@ -23,8 +25,15 @@ const TailButton = styled.button`
   }
 `;
 
-const Tail = ({ children, image, category }) => {
-  return <TailButton onClick={console.log(category)} style={{ backgroundImage: `url(${image})` }}>{children}</TailButton>;
+const Tail = ({ children, image }) => {
+  const context = useContext(RootContext);
+
+  const { openModal } = context;
+  return (
+    <TailButton onClick={(e) => openModal(e)} style={{ backgroundImage: `url(${image})` }}>
+      {children}
+    </TailButton>
+  );
 };
 
 export default Tail;
