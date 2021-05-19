@@ -2,17 +2,17 @@ import React, { useContext } from "react";
 import RootContext from "../context";
 import styled from "styled-components";
 
-import { Close } from "../assets/icons";
+import { Close, FilterArrow } from "../assets/icons";
 
 const Background = styled.div`
-  width: 100vw;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 const ModalWrapper = styled.div`
@@ -28,6 +28,8 @@ const ModalWrapper = styled.div`
 
   background: #292049;
   padding: 20px 24px;
+
+  background: linear-gradient(360deg, rgba(43, 34, 74, 0.8) 0%, #2b224a 5%);
 `;
 
 const ModalHeader = styled.div`
@@ -41,9 +43,73 @@ const HeaderTitle = styled.h2`
   font-size: 20px;
 `;
 
+const ModalFilters = styled.div`
+  display: flex;
+
+  button,
+  div {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #a094c6;
+  }
+
+  button {
+    border: none;
+    border-radius: 4px;
+    background-color: ${({ theme }) => theme.colors.background};
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: #322855;
+    }
+  }
+
+  div {
+    background-color: #322855;
+    border-radius: 0 4px 4px 0;
+
+    /* TODO: align center */
+  }
+`;
+
 const ModalContent = styled.div`
   width: 100%;
+  height: 200px;
+  margin-top: 16px;
+
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #51457c;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #51457c;
+  }
+  ::-webkit-scrollbar-track {
+    background: #20193a;
+    border-radius: 10px;
+    box-shadow: inset 7px 30px 12px #20193a;
+  }
+
+  .modal_data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    p {
+      margin-left: 10px;
+    }
+  }
 `;
 
 const CloseButton = styled.button`
@@ -56,8 +122,8 @@ const CloseButton = styled.button`
  */
 const Modal = () => {
   const context = useContext(RootContext);
-  const { showModal, setShowModal, initialSpaceX } = context;
-
+  const { showModal, setShowModal, initialSpaceX, isDataLoading } = context;
+  // TODO: is data loading
   return (
     <>
       {showModal ? (
@@ -70,15 +136,27 @@ const Modal = () => {
               </CloseButton>
             </ModalHeader>
 
+            <ModalFilters>
+              <button>
+                Type
+                <img src={FilterArrow} alt="Filter icon" />
+              </button>
+
+              <div>Status</div>
+            </ModalFilters>
+
             <ModalContent>
-              <h1>TEST ABC ABC</h1>
-              <p>TEST</p>
               {initialSpaceX.map((space) => {
                 return (
-                  <>
-                    <p>{space.agency}</p>
-                    <p>{space.serial}</p>
-                  </>
+                    <div className="modal_data" key={space.id}>
+                      <p>{space.agency}</p>
+                      <p>{space.status}</p>
+
+                      {/* TODO: */}
+                    {/* <p>{space.type}</p> */}
+                    {/* <p>{space.status}</p> */}
+
+                  </div>
                 );
               })}
             </ModalContent>
