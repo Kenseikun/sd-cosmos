@@ -15,7 +15,8 @@ const Categories = () => {
       {categories.map(({ name, image }) => {
         return (
           <Tail image={image} key={name}>
-            {name}
+            <p> {name} </p>
+            
           </Tail>
         );
       })}
