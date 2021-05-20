@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import RootContext from "../context";
 import styled from "styled-components";
 
@@ -129,6 +129,8 @@ const Modal = () => {
   const context = useContext(RootContext);
   const { category, initialSpaceX, isDataLoading, showModal, setShowModal } = context;
 
+  const modalRef = useRef();
+
   const _renderTypeAndStatus = (space) => {
     const { active, agency, name, status, type, version } = space;
 
@@ -175,10 +177,15 @@ const Modal = () => {
     }
   };
 
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) {
+      setShowModal(false);
+    }
+  };
   return (
     <>
       {showModal ? (
-        <Background>
+        <Background ref={modalRef} onClick={closeModal}>
           <ModalWrapper>
             <ModalHeader>
               <HeaderTitle>{category}</HeaderTitle>
