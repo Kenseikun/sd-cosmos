@@ -12,6 +12,10 @@ const Background = styled.div`
   justify-content: center;
   align-items: center;
 
+  position: absolute;
+  top: 0;
+  left: 0;
+
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
@@ -38,6 +42,7 @@ const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
+  text-transform: capitalize;
 `;
 
 const HeaderTitle = styled.h2`
@@ -76,8 +81,6 @@ const ModalFilters = styled.div`
   div {
     background-color: #322855;
     border-radius: 0 4px 4px 0;
-
-    /* TODO: align center */
   }
 `;
 
@@ -124,10 +127,10 @@ const CloseButton = styled.button`
  */
 const Modal = () => {
   const context = useContext(RootContext);
-  const { showModal, setShowModal, initialSpaceX, isDataLoading, category } = context;
+  const { category, initialSpaceX, isDataLoading, showModal, setShowModal } = context;
 
   const _renderTypeAndStatus = (space) => {
-    const { type, status, name, agency, active, version } = space;
+    const { active, agency, name, status, type, version } = space;
 
     switch (category) {
       case categoriesNames.capsules:
