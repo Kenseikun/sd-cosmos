@@ -122,6 +122,12 @@ const CloseButton = styled.button`
   border: none;
 `;
 
+const Spinner = styled(CircularProgress)`
+  position: absolute;
+  top: 50%;
+  left: 45%;
+`;
+
 /**
  * @author Sebastian Dziechciarz
  */
@@ -182,6 +188,7 @@ const Modal = () => {
       setShowModal(false);
     }
   };
+
   return (
     <>
       {showModal ? (
@@ -206,7 +213,7 @@ const Modal = () => {
             <ModalContent>
               <>
                 {isDataLoading ? (
-                  <CircularProgress color="secondary" />
+                  <Spinner color="secondary" />
                 ) : (
                   <>
                     {initialSpaceX.map((space) => {
