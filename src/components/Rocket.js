@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import RootContext from "../context";
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import { Moon, RocketImg, SmokeLeft, SmokeRight, Wings } from "../assets/images/rocket";
 
-const imgAnimate = keyframes`
-  from {
-    transform: translateY(200px);
+const rocketAnimation = keyframes`
+ from {
+    transform: translateY(0px);
   }
 
   to {
-    transform:  translateY(0px);
+    transform:  translateY(-1000px);
   }
 `;
 
@@ -32,13 +32,6 @@ const DIVWrapper = styled.div`
   width: 375px;
   height: 100%;
   margin-bottom: 24px;
-
-  /* TODO: */
-  animation: ${({ isAnimate }) =>
-    isAnimate &&
-    css`
-      border: 1px solid red;
-    `};
 `;
 
 const RocketDiv = styled.div`
@@ -50,6 +43,10 @@ const RocketDiv = styled.div`
 
   height: 444px;
   width: 100%;
+
+  &.animate {
+    animation: ${rocketAnimation} 4s ease infinite;
+  }
 
   img {
     position: absolute;
@@ -92,12 +89,12 @@ const LaunchButton = styled.button`
  */
 const Rocket = () => {
   const context = useContext(RootContext);
-  const { rocketAnimate } = context;
+  const { rocketAnimate, isRocketAnimate } = context;
 
   return (
     <RocketContainer>
       <DIVWrapper>
-        <RocketDiv>
+        <RocketDiv className={`${isRocketAnimate ? "animate" : ""}`}>
           <img src={RocketImg} alt="Rocket" />
           <img src={Wings} alt="Rocket" />
           <img src={SmokeLeft} alt="Rocket" />

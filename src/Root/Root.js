@@ -55,7 +55,7 @@ const Root = () => {
     setIsRocketAnimate(true);
     setInterval(() => {
       setIsRocketAnimate(false);
-    }, 2000);
+    }, 4000);
   };
 
   return (
@@ -65,6 +65,7 @@ const Root = () => {
         categories,
         initialSpaceX,
         isDataLoading,
+        isRocketAnimate,
         openModal,
         rocketAnimate,
         setShowModal,
