@@ -4,6 +4,8 @@ import RootContext from "../context";
 import styled from "styled-components";
 
 const TailButton = styled.button`
+  position: relative;
+
   width: 160px;
   height: 200px;
   border-radius: 16px;
@@ -20,7 +22,24 @@ const TailButton = styled.button`
   font-weight: 600;
 
   &:hover {
-    color: black;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(#eb01a5, #d13531);
+  }
+
+  p {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-weight: 600;
+
+    transition: 0.5s;
+  }
+
+  &:hover p {
+    bottom: 50%;
+    left: 50%;
   }
 `;
 
@@ -32,7 +51,6 @@ const Tail = ({ children, image }) => {
   const { openModal } = context;
 
   return (
-    // TODO: Dac children na dol
     <TailButton onClick={(e) => openModal(e)} style={{ backgroundImage: `url(${image})` }}>
       {children}
     </TailButton>
