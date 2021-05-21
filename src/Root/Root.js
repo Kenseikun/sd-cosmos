@@ -59,8 +59,14 @@ const Root = () => {
     }, 3000);
   };
 
+  /**
+   * `useRef` hook to get information about arrow icon in type <button>.
+   */
   const imgRef = useRef();
 
+  /**
+   * Function for sorting Types and change sorting icon.
+   */
   const sortAlphabetically = () => {
     if (category === categoriesNames.crew) {
       let sortedInitialSpaceX;
