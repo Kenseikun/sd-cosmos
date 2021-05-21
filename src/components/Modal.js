@@ -133,7 +133,7 @@ const Spinner = styled(CircularProgress)`
  */
 const Modal = () => {
   const context = useContext(RootContext);
-  const { category, initialSpaceX, isDataLoading, showModal, setShowModal } = context;
+  const { category, initialSpaceX, isDataLoading, showModal, setShowModal, imgRef, sortAlphabetically } = context;
 
   const modalRef = useRef();
 
@@ -202,9 +202,9 @@ const Modal = () => {
             </ModalHeader>
 
             <ModalFilters>
-              <button>
+              <button onClick={sortAlphabetically}>
                 Type
-                <img src={FilterArrow} alt="Filter icon" />
+                <img ref={imgRef} src={FilterArrow} alt="Filter icon" />
               </button>
 
               <div>Status</div>
