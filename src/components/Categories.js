@@ -16,7 +16,6 @@ const Categories = () => {
         return (
           <Tail image={image} key={name}>
             <p> {name} </p>
-            
           </Tail>
         );
       })}
