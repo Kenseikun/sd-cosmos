@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.js": "/sd-cosmos/static/js/main.4c3b18b5.chunk.js",
+    "main.js.map": "/sd-cosmos/static/js/main.4c3b18b5.chunk.js.map",
+    "runtime-main.js": "/sd-cosmos/static/js/runtime-main.b3ea22d5.js",
+    "runtime-main.js.map": "/sd-cosmos/static/js/runtime-main.b3ea22d5.js.map",
+    "static/css/2.65af8127.chunk.css": "/sd-cosmos/static/css/2.65af8127.chunk.css",
+    "static/js/2.d4e63294.chunk.js": "/sd-cosmos/static/js/2.d4e63294.chunk.js",
+    "static/js/2.d4e63294.chunk.js.map": "/sd-cosmos/static/js/2.d4e63294.chunk.js.map",
+    "index.html": "/sd-cosmos/index.html",
+    "static/css/2.65af8127.chunk.css.map": "/sd-cosmos/static/css/2.65af8127.chunk.css.map",
+    "static/js/2.d4e63294.chunk.js.LICENSE.txt": "/sd-cosmos/static/js/2.d4e63294.chunk.js.LICENSE.txt",
+    "static/media/capsules.70d7f74e.svg": "/sd-cosmos/static/media/capsules.70d7f74e.svg",
+    "static/media/close.1e4b9463.svg": "/sd-cosmos/static/media/close.1e4b9463.svg",
+    "static/media/crew.3755e6a5.svg": "/sd-cosmos/static/media/crew.3755e6a5.svg",
+    "static/media/details.75f21274.svg": "/sd-cosmos/static/media/details.75f21274.svg",
+    "static/media/down-arrow.8dd795e8.svg": "/sd-cosmos/static/media/down-arrow.8dd795e8.svg",
+    "static/media/filter-arrow.2c19fce6.svg": "/sd-cosmos/static/media/filter-arrow.2c19fce6.svg",
+    "static/media/logo.d135bb48.svg": "/sd-cosmos/static/media/logo.d135bb48.svg",
+    "static/media/moon.3dfe2663.svg": "/sd-cosmos/static/media/moon.3dfe2663.svg",
+    "static/media/rocket.714cbe96.svg": "/sd-cosmos/static/media/rocket.714cbe96.svg",
+    "static/media/rockets.24649eeb.svg": "/sd-cosmos/static/media/rockets.24649eeb.svg",
+    "static/media/smoke-left.504b6526.svg": "/sd-cosmos/static/media/smoke-left.504b6526.svg",
+    "static/media/smoke-right.40147cfb.svg": "/sd-cosmos/static/media/smoke-right.40147cfb.svg",
+    "static/media/up-arrow.36b385d3.svg": "/sd-cosmos/static/media/up-arrow.36b385d3.svg",
+    "static/media/wings.1f3e6da7.svg": "/sd-cosmos/static/media/wings.1f3e6da7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b3ea22d5.js",
+    "static/css/2.65af8127.chunk.css",
+    "static/js/2.d4e63294.chunk.js",
+    "static/js/main.4c3b18b5.chunk.js"
+  ]
+}
